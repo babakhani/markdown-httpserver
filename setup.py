@@ -8,7 +8,9 @@ with open(join(dirname(__file__), 'markdownserver', '__init__.py')) as f:
     version = re.match(r'^__version__ = \'(.*)\'', f.read()).group(1)
 
 
-dependencies = []
+dependencies = [
+    'easycli',
+]
 
 
 setup(
@@ -20,4 +22,10 @@ setup(
     description='markdown http server',
     packages=find_packages(),
     install_requires=dependencies,
+    license='MIT',
+    entry_points={
+        'console_scripts': [
+            'ms = markdownserver.cli:MarkdownServer.quickstart',
+        ]
+    }
 )
