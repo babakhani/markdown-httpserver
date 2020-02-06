@@ -5,11 +5,12 @@ from setuptools import setup, find_packages
 
 
 with open(join(dirname(__file__), 'markdownserver', '__init__.py')) as f:
-    version = re.match(r'^__version__ = \'(.*)\'', f.read()).group(1)
+    version = re.match(r'.*__version__ = \'(.*)\'', f.read(), re.S).group(1)
 
 
 dependencies = [
     'easycli',
+    'yhttp'
 ]
 
 
@@ -25,7 +26,7 @@ setup(
     license='MIT',
     entry_points={
         'console_scripts': [
-            'ms = markdownserver.cli:MarkdownServer.quickstart',
+            'ms = markdownserver:app.climain',
         ]
     }
 )
