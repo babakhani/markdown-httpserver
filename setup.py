@@ -10,7 +10,8 @@ with open(join(dirname(__file__), 'markdownserver', '__init__.py')) as f:
 
 dependencies = [
     'easycli',
-    'yhttp'
+    'yhttp',
+    'mistune',
 ]
 
 
@@ -21,7 +22,7 @@ setup(
     author='Reza Babakhani',
     author_email='babakhani.reza@gmail.com',
     description='markdown http server',
-    packages=find_packages(),
+    packages=find_packages(exclude=['tests']),
     install_requires=dependencies,
     license='MIT',
     entry_points={
