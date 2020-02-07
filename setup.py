@@ -10,7 +10,7 @@ with open(join(dirname(__file__), 'markdownserver', '__init__.py')) as f:
 
 dependencies = [
     'easycli',
-    'yhttp',
+    'yhttp >= 2.8, < 3',
     'markdown2',
 ]
 

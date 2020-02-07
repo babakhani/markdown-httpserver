@@ -28,7 +28,7 @@ def test_markdownserver(app):
         assert status == 200
         assertbody(EXPECTED_TOC)
 
-        when('/foo.md')
+        when('/foo')
         assert status == 200
         assertbody('<h1 id="foo-bar-baz">Foo Bar Baz</h1>\n')
 

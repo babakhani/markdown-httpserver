@@ -1,6 +1,6 @@
 from os.path import join, exists
 
-from yhttp import Application, text, notfound
+from yhttp import Application, text, notfound, html
 
 from .cli import Version
 from .markdown import markdown2html
@@ -18,7 +18,7 @@ html:
 
 
 @app.route(r'/(.*)')
-@text
+@html
 def get(req, path):
     root = app.settings.root
     if not path:
@@ -27,7 +27,7 @@ def get(req, path):
         yield app.settings.html.footer
         return
 
-    filename = join(root, path)
+    filename = join(root, f'{path}.md')
     if not exists(filename):
         raise notfound()
 
