@@ -89,7 +89,8 @@ def extract_toc(root, outfile, dept=3, cr='\n'):
                 closeall(l)
 
             href = splitext(relpath(filename, root))[0]
-            bookmark = h.lower().replace(' ', '-')
+            bookmark = re.sub(r'[:)(><]*', '', h.lower())
+            bookmark = re.sub(r'\s+', '-', bookmark)
             itemopen(h, f'/{href}#{bookmark}')
             level = l
 

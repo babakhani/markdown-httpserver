@@ -1,5 +1,5 @@
 ## Grault
 
 ### Garply
-### Waldo
+### Waldo fred (> 30 plugh) xyzzy
 

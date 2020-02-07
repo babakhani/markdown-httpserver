@@ -15,7 +15,7 @@ EXPECTED_TOC = '''<ul>
     <ul>
       <li><a href="/grault#garply">Garply</a>
       </li>
-      <li><a href="/grault#waldo">Waldo</a>
+      <li><a href="/grault#waldo-fred-30-plugh-xyzzy">Waldo fred (> 30 plugh) xyzzy</a>
       </li>
     </ul>
   </li>
