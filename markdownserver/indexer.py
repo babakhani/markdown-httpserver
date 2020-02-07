@@ -18,6 +18,11 @@ def headings(filename):
             yield len(level), title
 
 
+def allfiles(root):
+    for filename in Path(root).rglob('*.md'):
+        yield filename
+
+
 def extract_toc(root, outfile, dept=3, cr='\n'):
     step = 2
     level = 0
@@ -59,21 +64,20 @@ def extract_toc(root, outfile, dept=3, cr='\n'):
             level -= 1
 
     listopen()
-    for filename in Path(root).rglob('*.md'):
+    baselevel = 0
+    for filename in sorted(allfiles(root)):
         level = 0
         for l, h in headings(filename):
             if l > dept:
                 continue
 
-            if not level and l != 1:
-                # Root level gap, ignoring node, TODO: warning
-                continue
-
-            if l == level:
+            if not level:
+                level = baselevel = l
+            elif l == level:
                 itemclose()
 
             # Level ->
-            elif level and (l > level):
+            elif l > level:
                 if (l - level) > 1:
                     # Level gap, Ignoring node, TODO: warning
                     continue
@@ -81,15 +85,17 @@ def extract_toc(root, outfile, dept=3, cr='\n'):
                 listopen()
 
             # Level <-
-            elif level and (l < level):
+            elif l < level:
                 closeall(l)
 
             href = splitext(relpath(filename, root))[0]
-            bookmark = h.lower().replace(' ', '-')
+            bookmark = re.sub(r'[:)(><]*', '', h.lower())
+            bookmark = re.sub(r'\s+', '-', bookmark)
             itemopen(h, f'/{href}#{bookmark}')
             level = l
 
-        closeall(1)
+        if level >= 1:
+            closeall(baselevel)
 
     listclose()
 

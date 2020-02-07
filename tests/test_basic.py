@@ -16,14 +16,18 @@ EXPECTED_TOC = '''<ul>
   <li><a href="/bar#bar-bar">Bar bar</a>
     <ul>
       <li><a href="/bar#baz">Baz</a>
-        <ul>
-          <li><a href="/bar#qux">Qux</a>
-          </li>
-        </ul>
       </li>
     </ul>
   </li>
   <li><a href="/foo#foo-bar-baz">Foo Bar Baz</a>
+  </li>
+  <li><a href="/grault#grault">Grault</a>
+    <ul>
+      <li><a href="/grault#garply">Garply</a>
+      </li>
+      <li><a href="/grault#waldo-fred-30-plugh-xyzzy">Waldo fred (> 30 plugh) xyzzy</a>
+      </li>
+    </ul>
   </li>
 </ul>
 '''
@@ -40,7 +44,7 @@ def test_markdownserver(app):
 
         when('/foo')
         assert status == 200
-        assertbody('<h1 id="foo-bar-baz">Foo Bar Baz</h1>\n')
+        assertbody('<h2 id="foo-bar-baz">Foo Bar Baz</h2>\n')
 
         when('/notexists')
         assert status == 404
