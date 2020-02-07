@@ -11,7 +11,7 @@ with open(join(dirname(__file__), 'markdownserver', '__init__.py')) as f:
 dependencies = [
     'easycli',
     'yhttp',
-    'mistune',
+    'markdown2',
 ]
 
 
