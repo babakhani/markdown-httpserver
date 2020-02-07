@@ -1,6 +1,5 @@
-# Bar bar
-## Baz
-### Qux
-#### Quux
-##### Quuz
-###### Corge
+## Bar bar
+### Baz
+#### Qux
+##### Quux
+###### Quuz
