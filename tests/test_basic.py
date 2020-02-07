@@ -1,7 +1,17 @@
 from bddrest import Given, status, response, when
 
-EXPECTED_HEADER = '<doctype><html><header></header><body>'
-EXPECTED_FOOTER = '</body></html>'
+EXPECTED_HEADER = '''<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Markdownserver</title>
+  </head>
+  <body>
+'''
+EXPECTED_FOOTER = '''
+  </body>
+</html>
+'''
 EXPECTED_TOC = '''<ul>
   <li><a href="/bar#bar-bar">Bar bar</a>
     <ul>
