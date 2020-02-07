@@ -12,6 +12,7 @@ dependencies = [
     'easycli',
     'yhttp >= 2.8, < 3',
     'markdown2',
+    'mako'
 ]
 
 
