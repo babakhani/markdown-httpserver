@@ -1,20 +1,26 @@
-from os.path import join, exists
+from os.path import join, exists, dirname
 
 from yhttp import Application, text, notfound, html
+from mako.template import Template
 
 from .cli import Version
 from .markdown import markdown2html
 from . import indexer
 
-
+here = dirname(__file__)
+templatefilename = join(here, 'master.mako')
 app = Application()
 app.cliarguments.append(Version)
-app.settings.merge('''
+app.settings.merge(f'''
 root: .
-html:
-  header: <doctype><html><header></header><body>
-  footer: </body></html>
+template:
+  filename: {templatefilename}
 ''')
+
+
+@app.when
+def ready(app):
+    app.template = Template(filename=app.settings.template.filename)
 
 
 @app.route(r'/(.*)')
@@ -22,9 +28,10 @@ html:
 def get(req, path):
     root = app.settings.root
     if not path:
-        yield app.settings.html.header
-        yield indexer.generate(root)
-        yield app.settings.html.footer
+        yield app.template.render(
+            toc=indexer.generate(root),
+            content=indexer.generate(root),
+        )
         return
 
     filename = join(root, f'{path}.md')
@@ -32,6 +39,7 @@ def get(req, path):
         raise notfound()
 
     with open(filename) as f:
-        yield app.settings.html.header
-        yield markdown2html(f.read())
-        yield app.settings.html.footer
+        yield app.template.render(
+            toc=indexer.generate(root),
+            content=markdown2html(f.read()),
+        )
