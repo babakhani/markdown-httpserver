@@ -1,17 +1,6 @@
 from bddrest import Given, status, response, when
 
-EXPECTED_HEADER = '''<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Markdownserver</title>
-  </head>
-  <body>
-'''
-EXPECTED_FOOTER = '''
-  </body>
-</html>
-'''
+
 EXPECTED_TOC = '''<ul>
   <li><a href="/bar#bar-bar">Bar bar</a>
     <ul>
@@ -29,12 +18,10 @@ EXPECTED_TOC = '''<ul>
       </li>
     </ul>
   </li>
-</ul>
-'''
-
+</ul>'''
 
 def assertbody(b):
-    assert response.text == (EXPECTED_HEADER + b + EXPECTED_FOOTER)
+    assert response.text.strip() == b.strip()
 
 
 def test_markdownserver(app):
