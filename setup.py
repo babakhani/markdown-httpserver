@@ -29,7 +29,7 @@ setup(
     include_package_data=True,
     long_description_content_type='text/markdown',  # This is important!
     package_data={'markdownserver': [
-        'master.mako',
+        'markdownserver/master.mako',
         'static/*.css'
     ]},
     entry_points={
