@@ -10,25 +10,30 @@ with open(join(dirname(__file__), 'markdownserver', '__init__.py')) as f:
 
 dependencies = [
     'easycli',
-    'yhttp >= 2.8, < 3',
+    'yhttp >= 2.9, < 3',
     'markdown2',
     'mako'
 ]
 
 
 setup(
-    name='markdown-httpserver',
+    name='markdownserver',
     version=version,
-    url='https://github.com/babakhani/markdown-httpserver',
+    url='https://github.com/babakhani/markdownserver',
     author='Reza Babakhani',
     author_email='babakhani.reza@gmail.com',
     description='markdown http server',
     packages=find_packages(exclude=['tests']),
     install_requires=dependencies,
     license='MIT',
+    include_package_data=True,
+    package_data={'markdownserver': [
+        'master.mako',
+        'static/*.css'
+    ]},
     entry_points={
         'console_scripts': [
-            'ms = markdownserver:app.climain',
+            'markdownserver = markdownserver:app.climain',
         ]
     }
 )

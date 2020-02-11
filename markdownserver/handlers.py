@@ -25,7 +25,11 @@ static:
 @app.when
 def ready(app):
     app.template = Template(filename=app.settings.template.filename)
-    app.staticdirectory(f'/static/', app.settings.static)
+    app.staticdirectory(
+        app.settings.static.route,
+        app.settings.static.directory,
+        insert=0
+    )
 
 
 @app.route(r'/(.*)')

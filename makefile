@@ -1,7 +1,7 @@
 .PHONY: serve cover test
 
 serve:
-	gunicorn --reload wsgi:app
+	gunicorn -t999999 --reload --reload-extra-file markdownserver/master.mako wsgi:app
 
 
 cover:
