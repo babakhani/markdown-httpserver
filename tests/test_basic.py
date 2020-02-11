@@ -5,6 +5,10 @@ EXPECTED_TOC = '''<ul>
   <li><a href="/bar#bar-bar">Bar bar</a>
     <ul>
       <li><a href="/bar#baz">Baz</a>
+        <ul>
+          <li><a href="/bar#qux">Qux</a>
+          </li>
+        </ul>
       </li>
     </ul>
   </li>
@@ -19,6 +23,7 @@ EXPECTED_TOC = '''<ul>
     </ul>
   </li>
 </ul>'''
+
 
 def assertbody(b):
     assert response.text.strip() == b.strip()

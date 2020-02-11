@@ -68,7 +68,7 @@ def extract_toc(root, outfile, dept=2, cr='\n'):
     for filename in sorted(allfiles(root)):
         level = 0
         for l, h in headings(filename):
-            if l > dept:
+            if l > (baselevel + dept):
                 continue
 
             if not level:
