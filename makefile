@@ -1,4 +1,4 @@
-.PHONY: server cover test
+.PHONY: serve cover test
 
 serve:
 	gunicorn --reload wsgi:app

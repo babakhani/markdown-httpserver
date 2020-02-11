@@ -9,18 +9,23 @@ from . import indexer
 
 here = dirname(__file__)
 templatefilename = join(here, 'master.mako')
+staticdirectory = join(here, 'static')
 app = Application()
 app.cliarguments.append(Version)
 app.settings.merge(f'''
 root: .
 template:
   filename: {templatefilename}
+static:
+  directory: {staticdirectory}
+  route: /static/
 ''')
 
 
 @app.when
 def ready(app):
     app.template = Template(filename=app.settings.template.filename)
+    app.staticdirectory(f'/static/', app.settings.static)
 
 
 @app.route(r'/(.*)')
@@ -43,3 +48,4 @@ def get(req, path):
             toc=indexer.generate(root),
             content=markdown2html(f.read()),
         )
+
