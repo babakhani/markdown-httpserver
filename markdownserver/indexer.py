@@ -23,7 +23,7 @@ def allfiles(root):
         yield filename
 
 
-def extract_toc(root, outfile, dept=3, cr='\n'):
+def extract_toc(root, outfile, dept=2, cr='\n'):
     step = 2
     level = 0
     indent = 0
