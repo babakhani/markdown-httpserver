@@ -5,26 +5,15 @@
     <title>Markdownserver</title>
     <link 
 	  rel="stylesheet" 
+	  href="/static/style.css">
+    <link 
+	  rel="stylesheet" 
 	  href="/static/bootstrap.min.css">
-    <style>
-      .nav {
-	    padding-top: 2em; 
-	  }
-
-      .nav ul {
-	    padding-left: 1em;
-	  }
-
-      .nav li {
-	    list-style: none;
-	  }
-
-	  .sidebar-sticky{
-	    height: 100vh;
-	  }
-    </style>
   </head>
   <body>
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Markdownserver</a>
+    </nav>
     <div class="container-fluid">
       <div class="row">
         <nav class="col-md-3 d-none d-md-block bg-light sidebar">
