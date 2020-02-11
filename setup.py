@@ -23,6 +23,8 @@ setup(
     author='Reza Babakhani',
     author_email='babakhani.reza@gmail.com',
     description='markdown http server',
+    long_description=open('README.md').read(),
+    long_description_content_type='text/markdown',  # This is important!
     packages=find_packages(exclude=['tests']),
     install_requires=dependencies,
     license='MIT',
