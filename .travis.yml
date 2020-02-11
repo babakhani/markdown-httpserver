@@ -13,7 +13,7 @@ after_success: coveralls
 deploy:
   provider: pypi
   skip_cleanup: true
-  user: __token__
+  user: Vahid.Mardani
   password:
     secure: BGvNRlomP0SXBBUYZTWHD3E7a7ysmpbQGDUkLb+D2kH3tbOW28n2qQelA/n8MKXyeacuxlVHD00oPlaF73qXBERhiz8ai/zGqT/Ux19sKLO8XWb1FLeaX/1x74hsBxEyBu9bkgI5Hs8LR7EkQ9eP/Sog+evxicGOMPIiiMG9qRnaGiMsvoXuYz0vjZKL9U+ObJNnQMwSV+epFwPmwAxn03bnMDpA0S1BJX3i78+eErHtB1xIzFE1kzPkVG2pooDN+PU7rHaMvqlBMsdLSyosi58610va2iG6t8MHJ2yFmHAcGiJH/2tYJYC1aQ1i9/FLEqWCUrFAyImZkiXq6Ll2R8qyCQ+nD2dsnUQDYgH7rOeoe+sh9RSl/bgCP6OMbT9GV3SptbeZFSSy/+n219Bv9vCqqdjtpSYxg64q0RajIY/IOv2AuGZ68WkaJXAU3+hL/7EXdj2iP6S83ipRn6r0SaGfafXRLTDfc+eA4HaMQsdbclhd7ZEqamhJHnjno3puJWYmB+S4rZwelEws5aDrtWPyDvdo03Z7AmK1V/09gZklI+ipoOFycVpPrSDmFJ+RLn6Nu+C6LV5LNZIRatbqsO11YcQA5kLkysfjYmhw3p/5SfJ9LRLMjlTGxGKLzX4rjDUsdJNw5VtKTcUkezzC9KdkJV4hGCzFJRz9fNeBlXE=
   on:
