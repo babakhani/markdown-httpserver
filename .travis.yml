@@ -1,0 +1,23 @@
+language: python
+python: 3.6
+branches:
+  only:
+  - master
+  - ci
+  - "/^(release\\/)?v([1-9]\\d*!)?(0|[1-9]\\d*)(\\.(0|[1-9]\\d*))*((a|b|rc)(0|[1-9]\\d*))?(\\.post(0|[1-9]\\d*))?(\\.dev(0|[1-9]\\d*))?$/"
+before_install:
+- pip install -r requirements-ci.txt
+install: pip install -e .
+script: make cover
+after_success: coveralls
+deploy:
+  provider: pypi
+  skip_cleanup: true
+  user: babakhani
+  password:
+    secure: NwNUMYVo1wmYFYRwjNw99wBhmS5Z/jwwET1IBKwVtjBM+VWT1AVcc4UbRTRZm633mTb04hHaV9EPbW7T+zNnIiaT62j5JY+sv4wqiTN/ndEgHOHPNlZ8Fp0aAh+3iBOAmNvYJWdrU3Wy51RPHjHgGTN0ThyxkCxrFWSZVDCh7JTCukpdTN4yu16ikUDsZlWDDtA/4augaGyp/B9Rzs6UppwIobqQPs5Jg41HaoZMShVJ8JY1IfY/htQoOc56lTZsSdnlpX/a6hYX6MiL+lvYS8fbgAUuCE/2IfkbbijJsuBkhoCBuYgtXQAbyfbYTcCGLYrx/vp65V22mHFlEIF2yVulAlfJWP0A0dPTpXBxt4VBCNpAULAsFw88hO99cDnjpi8BNiRi238uvjZCvWyFNo+k8fBg+Z1JXEoUHSJtrJ+IXPf+9P4HsDOPu0QznqcNKCb58eNsl3rK4HV0nPlwyWwUKUTIhLr05vdkE4cZIV4GdzzxBviBWp4i0SXSU1FmNb5QVEA/k5LhEnDZmrh8NVjgmpG2zWMxGjQ4NBTkFGYXpjvrlAFQIdayq8+g2PPtmeQgk666D0JQ88444YgKKaG3l6sd3SG6Y7hldREhBguuEm4hTpjUYwlGDW6jXhtwnr5o5kzHzUh4jUSKtkLmAvffgtOSipaxIRAgAQmYg2Y=
+  on:
+    tags: true
+    distributions: sdist
+    repo: babakhani/markdownserver
+    condition: "$TRAVIS_PYTHON_VERSION = 3.6"
