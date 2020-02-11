@@ -12,7 +12,7 @@
   </head>
   <body>
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0">
-      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Markdownserver</a>
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/">Markdownserver</a>
     </nav>
     <div class="container-fluid">
       <div class="row">
@@ -24,7 +24,9 @@
     	  </div>
     	</nav>
     	 <main role="main" class="col-md-9 ml-sm-auto col-lg-9 px-4">
-    	   ${content}
+		   % if not content == toc:
+    	     ${content}
+		   % endif
     	 </main>
       </div>
     </div>
